@@ -1,1 +1,21 @@
-test
+# =============================================
+# requirements.txt — recommended versions
+# =============================================
+# FastAPI server
+fastapi>=0.110
+uvicorn[standard]>=0.27
+
+# Core inference stack (CUDA 12.1 wheels for torch)
+torch==2.3.1+cu121
+torchvision==0.18.1+cu121
+--extra-index-url https://download.pytorch.org/whl/cu121
+
+transformers==4.44.2
+accelerate==0.33.0
+bitsandbytes==0.43.1
+safetensors>=0.4.3
+sentencepiece>=0.1.99
+huggingface_hub>=0.23.0
+
+# Utilities
+pydantic>=2.6

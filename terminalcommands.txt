@@ -1,0 +1,8 @@
+source .llmsetup/bin/activate
+sudo apt update
+sudo apt install git-lfs
+git lfs install
+huggingface-cli login
+huggingface-cli download Qwen/Qwen2.5-7B-Instruct \
+  --local-dir ./qwen2.5-7b-instruct \
+  --resume-download

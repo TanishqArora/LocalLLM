@@ -1,0 +1,18 @@
+# =============================================
+# .dockerignore — keep images lean
+# =============================================
+.dockerignore
+----------------
+.git
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.mypy_cache
+.pytest_cache
+.venv
+.env
+*.log
+qwen2.5-7b-instruct/
+llama2-13b-chat-hf/
+gpt-oss-20b/

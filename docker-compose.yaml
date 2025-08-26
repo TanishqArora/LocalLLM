@@ -1,0 +1,31 @@
+# =============================================
+# docker-compose.yml — run with NVIDIA GPU
+# =============================================
+version: "3.9"
+services:
+  qwen-server:
+    build: .
+    image: localllm-qwen-server:latest
+    container_name: qwen-server
+    ports:
+      - "8000:8000"
+    environment:
+      # Path inside container where the model is mounted
+      MODEL_PATH: /models/qwen2.5-7b-instruct
+      # 1 = 4-bit (default), 0 = load 8-bit
+      LOAD_4BIT: "1"
+    volumes:
+      # Mount your downloaded model folder into the container
+      - ./qwen2.5-7b-instruct:/models/qwen2.5-7b-instruct:ro
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    runtime: nvidia
+    # Healthcheck
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
