@@ -6,7 +6,7 @@ services:
       - "8000:8000"
     environment:
       MODEL_PATH: /models/qwen2.5-7b-instruct
-      LOAD_4BIT: "1"
+      LOAD_4BIT: "0"
     volumes:
       - ./qwen2.5-7b-instruct:/models/qwen2.5-7b-instruct:ro
     gpus: all
